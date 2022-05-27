@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+group 'net.covers1624'
+version '0.1.0'
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven { url 'https://maven.covers1624.net/' }
+}
+
+dependencies {
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-jul:2.17.2'
+
+    implementation 'org.jetbrains:annotations:23.0.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'net.covers1624:Quack:0.4.2.51'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'org.jsoup:jsoup:1.14.3'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'net.covers1624.projectbot.OpenJdkProjectBot'
+        attributes 'Multi-Release': 'true'
+    }
+    transform(com.github.jengelman.gradle.plugins.shadow.transformers.Log4j2PluginsCacheFileTransformer)
+}
+
+test {
+    useJUnitPlatform()
+}
