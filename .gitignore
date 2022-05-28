@@ -9,3 +9,6 @@
 !settings.gradle
 
 !.gitignore
+
+!LICENSE.txt
+!README.md
