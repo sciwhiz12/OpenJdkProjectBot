@@ -154,7 +154,7 @@ public class OpenJdkProjectBot {
                     .addEmbed(new Embed()
                             .setTitle("JEP Changes")
                             .setUrl(JDK_LIST_URL)
-                            .setDescription("The following Project versions have changed:\n" + desc.toString().trim())
+                            .setDescription("The following JEPs have changed:\n" + desc.toString().trim())
                     )
                     .execute();
         }
