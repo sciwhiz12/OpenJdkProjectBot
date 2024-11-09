@@ -99,7 +99,7 @@ public class ProjectListChecker {
         for (Element li : ul.select("li")) {
             Element a = li.child(0);
             String version = a.text();
-            String desc = li.text().replace(version, "").trim();
+            String desc = li.text().replaceFirst(version, "").trim();
             desc = StringUtils.removeStart(desc, "(");
             desc = StringUtils.removeEnd(desc, ")");
             versions.put(version, new ProjectVersion(version, desc));
